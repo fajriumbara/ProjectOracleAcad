@@ -8,5 +8,4 @@ public class Mail extends Armor {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

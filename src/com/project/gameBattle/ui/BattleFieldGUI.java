@@ -14,36 +14,124 @@ import com.project.gameBattle.dom.Spear;
 import com.project.gameBattle.dom.Sword;
 import com.project.gameBattle.dom.Water;
 import com.project.gameBattle.dom.Wind;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
 
-public class BattleFieldGUI extends JFrame{
+public class BattleFieldGUI extends JFrame {
+
 	public BattleFieldGUI() {
-		//environtment
+		// environment
+
 		Player p1 = new Player("Ali", "Elf", 100, 100);
-		CPU cpu1 = new CPU ("Udin", "Goblin", 100, 100);
+		CPU cpu1 = new CPU("Udin", "Goblin", 100, 100);
 		Sword w1 = new Sword(4);
 		Spear w2 = new Spear(5);
 		Arrow w3 = new Arrow(3);
-		
+
 		Mail a1 = new Mail(3);
 		Shield a2 = new Shield(3);
-				
+
 		Fire m1 = new Fire(6);
 		Water m2 = new Water(6);
 		Wind m3 = new Wind(6);
-		
+
 		p1.equip(w1, a1, m1);
 		cpu1.equip(w2, a2, m3);
-		//end environtment
-		
+		// end environment
+
+		getContentPane().setLayout(null);
+
+		JLabel lblHero = new JLabel("Hero 1 : Player");
+		lblHero.setBounds(122, 134, 99, 14);
+		getContentPane().add(lblHero);
+
+		JLabel lblVs = new JLabel("VS");
+		lblVs.setBounds(245, 134, 46, 14);
+		getContentPane().add(lblVs);
+
+		JLabel lblHero_1 = new JLabel("Hero 2 : CPU");
+		lblHero_1.setBounds(315, 134, 70, 14);
+		getContentPane().add(lblHero_1);
+
 		System.out.println(p1);
 		System.out.println(cpu1);
-		
-	
-		
-	
-		
-		getContentPane().setLayout(null);
-		setSize(800,600);
-	}
 
+		GameBattleRules gb = new GameBattleRules();
+
+		JButton btnAttackWithWeapon = new JButton("Attack With Weapon");
+		btnAttackWithWeapon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				p1.attackWithWeapon(cpu1, w1);
+				cpu1.attackWithWeapon(p1, w2);
+				System.out.println("Player menyerang dengan senjata");
+				System.out.println(p1.hp);
+				System.out.println(cpu1.hp);
+
+				if (gb.checkLifeHero(p1, cpu1) == -1) {
+					JOptionPane.showMessageDialog(rootPane, "PLAYER WINS!");
+				} 
+				if (gb.checkLifeHero(p1, cpu1) == 1) {
+					JOptionPane.showMessageDialog(rootPane, "CPU WINS!");
+				} 
+				if (gb.checkLifeHero(p1, cpu1) == 0) {
+					JOptionPane.showMessageDialog(rootPane, "DRAW");
+				}
+
+			}
+		});
+		btnAttackWithWeapon.setBounds(69, 175, 152, 23);
+		getContentPane().add(btnAttackWithWeapon);
+
+		JButton btnAttackWithMagic = new JButton("Attack With Magic");
+		btnAttackWithMagic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				p1.attackWithMagic(cpu1, m1);
+				cpu1.attackWithMagic(p1, m2);
+				System.out.println("Player menyerang dengan sihir");
+				System.out.println(p1.hp);
+				System.out.println(cpu1.hp);
+				if (gb.checkLifeHero(p1, cpu1) == -1) {
+					JOptionPane.showMessageDialog(rootPane, "PLAYER WINS!");
+				} 
+				if (gb.checkLifeHero(p1, cpu1) == 1) {
+					JOptionPane.showMessageDialog(rootPane, "CPU WINS!");
+				} 
+				if (gb.checkLifeHero(p1, cpu1) == 0) {
+					JOptionPane.showMessageDialog(rootPane, "DRAW");
+				}
+			}
+		});
+		btnAttackWithMagic.setBounds(69, 209, 152, 23);
+		getContentPane().add(btnAttackWithMagic);
+
+		JButton btnDefendWithArmor = new JButton("Defend With Armor");
+		btnDefendWithArmor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p1.defendWithArmor(p1, a1);
+				cpu1.defendWithArmor(cpu1, a2);
+				System.out.println("Player bertahan dengan armor");
+				System.out.println(p1.hp);
+				System.out.println(cpu1.hp);
+				if (gb.checkLifeHero(p1, cpu1) == -1) {
+					JOptionPane.showMessageDialog(rootPane, "PLAYER WINS!");
+				} 
+				if (gb.checkLifeHero(p1, cpu1) == 1) {
+					JOptionPane.showMessageDialog(rootPane, "CPU WINS!");
+				} 
+				if (gb.checkLifeHero(p1, cpu1) == 0) {
+					JOptionPane.showMessageDialog(rootPane, "DRAW");
+				}
+			}
+		});
+		btnDefendWithArmor.setBounds(69, 243, 152, 23);
+		getContentPane().add(btnDefendWithArmor);
+		setSize(800, 600);
+
+	}
 }

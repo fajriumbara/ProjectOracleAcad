@@ -1,6 +1,6 @@
 package com.project.gameBattle.dom;
 
-public class Player extends Hero {
+public class Player extends Hero implements HeroMovements {
 
 	public Player(String string, String string2, int i, int j) {
 		// TODO Auto-generated constructor stub
@@ -11,22 +11,24 @@ public class Player extends Hero {
 	}
 
 	@Override
-	public void attack(Hero h) {
+	public void attackWithWeapon(Hero h, Weapon w) {
 		// TODO Auto-generated method stub
-		System.out.println(this.name + " menyerang " + h.name);
-		
+		Player.this.hp -= h.attackPoint;
+
 	}
 
 	@Override
-	public void defend(Hero h) {
+	public void attackWithMagic(Hero h, Magic m) {
 		// TODO Auto-generated method stub
-		
+		Player.this.hp -= h.magicPoint;
+		Player.this.mp -= m.manaPoinReduction;
+
 	}
 
-
-
-
-
-	
+	@Override
+	public void defendWithArmor(Hero h, Armor a) {
+		// TODO Auto-generated method stub
+		Player.this.hp -= h.defendPoint;
+	}
 
 }

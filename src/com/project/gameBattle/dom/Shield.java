@@ -8,5 +8,4 @@ public class Shield extends Armor {
 		// TODO Auto-generated constructor stub
 	}
 
-
 }

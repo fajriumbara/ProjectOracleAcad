@@ -8,5 +8,4 @@ public class Sword extends Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

@@ -8,6 +8,4 @@ public class Spear extends Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	
 }

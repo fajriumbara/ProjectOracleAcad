@@ -8,8 +8,4 @@ public class Arrow extends Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	
-	
 }
