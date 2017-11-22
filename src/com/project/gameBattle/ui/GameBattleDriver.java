@@ -4,7 +4,7 @@ public class GameBattleDriver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		new MainMenuGUI().setVisible(true);
 	}
 
 }
