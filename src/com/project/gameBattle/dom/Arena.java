@@ -16,6 +16,11 @@ public class Arena {
 		
 	}
 	
+	public void start() {
+		
+	}
+	
+	
 	public static void main(String[] args) {
 		//coba
 		System.out.println("Test Arena");
