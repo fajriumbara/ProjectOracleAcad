@@ -1,5 +1,11 @@
 package com.project.gameBattle.ui;
 
-public class BattleFieldGUI {
+import javax.swing.JFrame;
+
+public class BattleFieldGUI extends JFrame{
+	public BattleFieldGUI() {
+		getContentPane().setLayout(null);
+		setSize(800,600);
+	}
 
 }
