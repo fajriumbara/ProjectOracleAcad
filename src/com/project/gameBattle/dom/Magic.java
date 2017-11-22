@@ -1,5 +1,8 @@
 package com.project.gameBattle.dom;
 
-public class Magic {
+public abstract class Magic {
+	
+	public int attackPontMagic;
+
 
 }

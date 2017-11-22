@@ -1,5 +1,11 @@
 package com.project.gameBattle.dom;
 
-public class Weapon {
+public abstract class Weapon {
+	
+	public int attackPointWeapon;
+
+	
+	
+	
 
 }

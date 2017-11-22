@@ -1,28 +1,31 @@
 package com.project.gameBattle.dom;
 
-public class Hero {
-	String name;
-	String classHero;
-	int hp;
-	int mp;
+public abstract class Hero {
+	public String name;
+	public String classHero;
+	public int hp;
+	public int mp;
+	public int attackPoint;
+	public int magicPoint;
+	public int defendPoint;
 	
 	
-	public Hero(String name, String classHero, int hp, int mp) {
-		super();
-		this.name = name;
-		this.classHero = classHero;
-		this.hp = hp;
-		this.mp = mp;
+	
+	public abstract void attack(Hero h);
+	public abstract void defend(Hero h);
+	public void equip(Weapon wp, Armor ar, Magic m) {
+		attackPoint = wp.attackPointWeapon;
+		defendPoint = ar.defendPointArmor;
+		magicPoint = m.attackPontMagic;
 	}
-	void attack() {
-		
+	@Override
+	public String toString() {
+		return "Hero [name=" + name + ", classHero=" + classHero + ", hp=" + hp + ", mp=" + mp + ", attackPoint="
+				+ attackPoint + ", magicPoint=" + magicPoint + ", defendPoint=" + defendPoint + "]";
 	}
-	void defend() {
-		
-	}
-	void equip(Weapon wp, Armor ar) {
-		
-	}
+	
+	
+
 	
 
 }
