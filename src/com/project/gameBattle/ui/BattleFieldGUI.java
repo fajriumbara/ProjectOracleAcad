@@ -69,8 +69,8 @@ public class BattleFieldGUI extends JFrame {
 		JButton btnAttackWithWeapon = new JButton("Attack With Weapon");
 		btnAttackWithWeapon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				p1.attackWithWeapon(cpu1, w1);
-				cpu1.attackWithWeapon(p1, w2);
+				p1.attackWithWeapon(cpu1, p1.wp);
+				cpu1.attackWithWeapon(p1, cpu1.wp);
 				System.out.println("Player menyerang dengan senjata");
 				System.out.println(p1.hp);
 				System.out.println(cpu1.hp);
@@ -95,8 +95,8 @@ public class BattleFieldGUI extends JFrame {
 		JButton btnAttackWithMagic = new JButton("Attack With Magic");
 		btnAttackWithMagic.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				p1.attackWithMagic(cpu1, m1);
-				cpu1.attackWithMagic(p1, m2);
+				p1.attackWithMagic(cpu1, p1.m);
+				cpu1.attackWithMagic(p1, cpu1.m);
 				System.out.println("Player menyerang dengan sihir");
 				System.out.println(p1.hp);
 				System.out.println(cpu1.hp);
@@ -119,8 +119,8 @@ public class BattleFieldGUI extends JFrame {
 		JButton btnDefendWithArmor = new JButton("Defend With Armor");
 		btnDefendWithArmor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				p1.defendWithArmor(p1, a1);
-				cpu1.defendWithArmor(cpu1, a2);
+				p1.defendWithArmor(p1, p1.ar);
+				cpu1.defendWithArmor(cpu1, cpu1.ar);
 				System.out.println("Player bertahan dengan armor");
 				System.out.println(p1.hp);
 				System.out.println(cpu1.hp);

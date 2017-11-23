@@ -8,12 +8,17 @@ public abstract class Hero {
 	public int attackPoint;
 	public int magicPoint;
 	public int defendPoint;
-	
+	public Weapon wp;
+	public Armor ar;
+	public Magic m;
 
 	public void equip(Weapon wp, Armor ar, Magic m) {
 		attackPoint = wp.attackPointWeapon;
 		defendPoint = ar.defendPointArmor;
 		magicPoint = m.attackPontMagic;
+		this.wp = wp;
+		this.ar = ar;
+		this.m = m;
 	}
 
 	@Override
