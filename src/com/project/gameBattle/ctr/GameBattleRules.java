@@ -13,20 +13,24 @@ public class GameBattleRules {
 			return 1;
 		} else if (h2.hp <= 0) {
 			return -1;
-		}else if (h2.hp == 0 && h1.hp ==0) {
+		} else if (h2.hp == 0 && h1.hp == 0) {
 			return 0;
-		}else {
+		} else {
 			return 999;
 		}
 
 	}
-	
+
 	public int randCritical() {
 		Random rn = new Random();
-		int n = rn.nextInt((3 - (-3)) + 1) + (-3);
+		int n = rn.nextInt((5 - (-5)) + 1) + (-5);
 		return n;
 	}
-	
 
+	public int cpuMovement() {
+		Random rn = new Random();
+		int n = rn.nextInt((3 - 1) + 1) + 1;
+		return n;
+	}
 
 }
