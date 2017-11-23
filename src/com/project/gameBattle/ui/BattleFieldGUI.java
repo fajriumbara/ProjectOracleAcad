@@ -23,12 +23,14 @@ import java.awt.event.ActionListener;
 import java.awt.TextArea;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class BattleFieldGUI extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private String history = "";
 
 	public BattleFieldGUI() {
 		
@@ -50,14 +52,10 @@ public class BattleFieldGUI extends JFrame {
 
 		p1.equip(w1, a1, m1);
 		cpu1.equip(w2, a2, m3);
-		// end environment
-		
-
-
 		getContentPane().setLayout(null);
 
 		JLabel lblHero = new JLabel("Hero 1 : Player");
-		lblHero.setBounds(122, 134, 99, 14);
+		lblHero.setBounds(122, 134, 126, 14);
 		getContentPane().add(lblHero);
 
 		JLabel lblVs = new JLabel("VS");
@@ -65,35 +63,58 @@ public class BattleFieldGUI extends JFrame {
 		getContentPane().add(lblVs);
 
 		JLabel lblHero_1 = new JLabel("Hero 2 : CPU");
-		lblHero_1.setBounds(315, 134, 70, 14);
+		lblHero_1.setBounds(315, 134, 107, 14);
 		getContentPane().add(lblHero_1);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(307, 187, 254, 137);
+		getContentPane().add(scrollPane);
+		
+		JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		
 
+		history = (String) p1.toString();
+		history += '\n'+(String) p1.toString();
+		textArea.setText(history);
+		
+		
+		
 		System.out.println(p1);
 		System.out.println(cpu1);
 
 		GameBattleRules gb = new GameBattleRules();
 
 		JButton btnAttackWithWeapon = new JButton("Attack With Weapon");
+		btnAttackWithWeapon.setBounds(69, 175, 152, 23);
 		btnAttackWithWeapon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				p1.attackWithWeapon(cpu1, p1.wp);
 				System.out.println("Player menyerang dengan senjata");
-
+				history+='\n' + "Player menyerang dengan senjata";
+				textArea.setText(history);
 				GameBattleRules gb = new GameBattleRules();
 
 				switch (gb.cpuMovement()) {
 				case 1:
 					cpu1.attackWithWeapon(p1, cpu1.wp);
 					System.out.println("CPU menyerang dengan senjata");
+					history+='\n' + "CPU menyerang dengan senjata";
+					textArea.setText(history);
 					break;
 				case 2:
 					cpu1.attackWithMagic(p1, cpu1.m);
 					System.out.println("CPU menyerang dengan sihir");
+					history+='\n' + "CPU menyerang dengan sihir";
+					textArea.setText(history);
 					break;
 				case 3:
 					int temp = cpu1.defendPoint;
 					cpu1.defendWithArmor(cpu1, cpu1.ar);
 					System.out.println("CPU bertahan dengan armor");
+					history+='\n' + "CPU bertahan dengan armor";
+					textArea.setText(history);
 					cpu1.defendPoint = temp;
 					break;
 
@@ -127,29 +148,37 @@ public class BattleFieldGUI extends JFrame {
 
 			}
 		});
-		btnAttackWithWeapon.setBounds(69, 175, 152, 23);
 		getContentPane().add(btnAttackWithWeapon);
 
 		JButton btnAttackWithMagic = new JButton("Attack With Magic");
+		btnAttackWithMagic.setBounds(69, 209, 152, 23);
 		btnAttackWithMagic.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				p1.attackWithMagic(cpu1, p1.m);
 				System.out.println("Player menyerang dengan sihir");
+				history+='\n' + "Player menyerang dengan sihir";
+				textArea.setText(history);
 				GameBattleRules gb = new GameBattleRules();
 
 				switch (gb.cpuMovement()) {
 				case 1:
 					cpu1.attackWithWeapon(p1, cpu1.wp);
 					System.out.println("CPU menyerang dengan senjata");
+					history+='\n' + "CPU menyerang dengan senjata";
+					textArea.setText(history);
 					break;
 				case 2:
 					cpu1.attackWithMagic(p1, cpu1.m);
 					System.out.println("CPU menyerang dengan sihir");
+					System.out.println("CPU menyerang dengan sihir");
+					history+='\n' + "CPU menyerang dengan sihir";
 					break;
 				case 3:
 					int temp = cpu1.defendPoint;
 					cpu1.defendWithArmor(cpu1, cpu1.ar);
 					System.out.println("CPU bertahan dengan armor");
+					System.out.println("CPU bertahan dengan armor");
+					history+='\n' + "CPU bertahan dengan armor";
 					cpu1.defendPoint = temp;
 					break;
 
@@ -180,32 +209,40 @@ public class BattleFieldGUI extends JFrame {
 				textField_3.setText(Integer.toString(cpu1.mp));
 			}
 		});
-		btnAttackWithMagic.setBounds(69, 209, 152, 23);
 		getContentPane().add(btnAttackWithMagic);
 
 		JButton btnDefendWithArmor = new JButton("Defend With Armor");
+		btnDefendWithArmor.setBounds(69, 243, 152, 23);
 		btnDefendWithArmor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int temp1 = p1.defendPoint;
 				p1.defendWithArmor(p1, p1.ar);
 				System.out.println("Player bertahan dengan armor");
+				history+='\n' + "Player bertahan dengan armor";
+				textArea.setText(history);
 				GameBattleRules gb = new GameBattleRules();
 
 				switch (gb.cpuMovement()) {
 				case 1:
 					cpu1.attackWithWeapon(p1, cpu1.wp);
 					System.out.println("CPU menyerang dengan senjata");
+					history+='\n' + "CPU menyerang dengan senjata";
+					textArea.setText(history);
 					p1.defendPoint = temp1;
 					break;
 				case 2:
 					cpu1.attackWithMagic(p1, cpu1.m);
 					System.out.println("CPU menyerang dengan sihir");
+					System.out.println("CPU menyerang dengan sihir");
+					history+='\n' + "CPU menyerang dengan sihir";
 					p1.defendPoint = temp1;
 					break;
 				case 3:
 					int temp = cpu1.defendPoint;
 					cpu1.defendWithArmor(cpu1, cpu1.ar);
 					System.out.println("CPU bertahan dengan armor");
+					System.out.println("CPU bertahan dengan armor");
+					history+='\n' + "CPU bertahan dengan armor";
 					cpu1.defendPoint = temp;
 					p1.defendPoint = temp1;
 					break;
@@ -238,7 +275,6 @@ public class BattleFieldGUI extends JFrame {
 
 			}
 		});
-		btnDefendWithArmor.setBounds(69, 243, 152, 23);
 		getContentPane().add(btnDefendWithArmor);
 
 		JLabel lblHeroHp = new JLabel("Hero Hp :");
@@ -284,6 +320,8 @@ public class BattleFieldGUI extends JFrame {
 		textField_1.setText(Integer.toString(cpu1.hp));
 		textField_2.setText(Integer.toString(p1.mp));
 		textField_3.setText(Integer.toString(cpu1.mp));
+		
+
 
 	}
 }
