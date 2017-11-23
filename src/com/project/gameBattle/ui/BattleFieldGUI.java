@@ -24,6 +24,8 @@ import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 
 public class BattleFieldGUI extends JFrame {
+	private JTextField textField;
+	private JTextField textField_1;
 
 	public BattleFieldGUI() {
 		// environment
@@ -82,6 +84,8 @@ public class BattleFieldGUI extends JFrame {
 				if (gb.checkLifeHero(p1, cpu1) == 0) {
 					JOptionPane.showMessageDialog(rootPane, "DRAW");
 				}
+				textField.setText(Integer.toString(p1.hp));
+				textField_1.setText(Integer.toString(cpu1.hp));
 
 			}
 		});
@@ -105,6 +109,8 @@ public class BattleFieldGUI extends JFrame {
 				if (gb.checkLifeHero(p1, cpu1) == 0) {
 					JOptionPane.showMessageDialog(rootPane, "DRAW");
 				}
+				textField.setText(Integer.toString(p1.hp));
+				textField_1.setText(Integer.toString(cpu1.hp));
 			}
 		});
 		btnAttackWithMagic.setBounds(69, 209, 152, 23);
@@ -127,11 +133,33 @@ public class BattleFieldGUI extends JFrame {
 				if (gb.checkLifeHero(p1, cpu1) == 0) {
 					JOptionPane.showMessageDialog(rootPane, "DRAW");
 				}
+				textField.setText(Integer.toString(p1.hp));
+				textField_1.setText(Integer.toString(cpu1.hp));
 			}
 		});
 		btnDefendWithArmor.setBounds(69, 243, 152, 23);
 		getContentPane().add(btnDefendWithArmor);
+		
+		JLabel lblHeroHp = new JLabel("Hero Hp :");
+		lblHeroHp.setBounds(46, 67, 99, 20);
+		getContentPane().add(lblHeroHp);
+		
+		JLabel lblCpuHp = new JLabel("CPU Hp :");
+		lblCpuHp.setBounds(333, 67, 69, 20);
+		getContentPane().add(lblCpuHp);
+		
+		textField = new JTextField();
+		textField.setBounds(122, 64, 70, 26);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(417, 64, 70, 26);
+		getContentPane().add(textField_1);
+		textField_1.setColumns(10);
 		setSize(800, 600);
+		textField.setText(Integer.toString(p1.hp));
+		textField_1.setText(Integer.toString(cpu1.hp));
 
 	}
 }
