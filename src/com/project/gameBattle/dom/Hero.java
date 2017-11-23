@@ -8,6 +8,7 @@ public abstract class Hero {
 	public int attackPoint;
 	public int magicPoint;
 	public int defendPoint;
+	
 
 	public void equip(Weapon wp, Armor ar, Magic m) {
 		attackPoint = wp.attackPointWeapon;
