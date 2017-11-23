@@ -1,5 +1,7 @@
 package com.project.gameBattle.ctr;
 
+import java.util.Random;
+
 import com.project.gameBattle.dom.Hero;
 import com.project.gameBattle.dom.Player;
 
@@ -18,5 +20,13 @@ public class GameBattleRules {
 		}
 
 	}
+	
+	public int randCritical() {
+		Random rn = new Random();
+		int n = rn.nextInt((3 - (-3)) + 1) + (-3);
+		return n;
+	}
+	
+
 
 }

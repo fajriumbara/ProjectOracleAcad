@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.TextArea;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 
 public class BattleFieldGUI extends JFrame {
@@ -77,12 +78,18 @@ public class BattleFieldGUI extends JFrame {
 
 				if (gb.checkLifeHero(p1, cpu1) == -1) {
 					JOptionPane.showMessageDialog(rootPane, "PLAYER WINS!");
+					setVisible(false);
+					dispose();
 				} 
 				if (gb.checkLifeHero(p1, cpu1) == 1) {
 					JOptionPane.showMessageDialog(rootPane, "CPU WINS!");
+					setVisible(false);
+					dispose();
 				} 
 				if (gb.checkLifeHero(p1, cpu1) == 0) {
 					JOptionPane.showMessageDialog(rootPane, "DRAW");
+					setVisible(false);
+					dispose();
 				}
 				textField.setText(Integer.toString(p1.hp));
 				textField_1.setText(Integer.toString(cpu1.hp));
@@ -102,12 +109,18 @@ public class BattleFieldGUI extends JFrame {
 				System.out.println(cpu1.hp);
 				if (gb.checkLifeHero(p1, cpu1) == -1) {
 					JOptionPane.showMessageDialog(rootPane, "PLAYER WINS!");
+					setVisible(false);
+					dispose();
 				} 
 				if (gb.checkLifeHero(p1, cpu1) == 1) {
 					JOptionPane.showMessageDialog(rootPane, "CPU WINS!");
+					setVisible(false);
+					dispose();
 				} 
 				if (gb.checkLifeHero(p1, cpu1) == 0) {
 					JOptionPane.showMessageDialog(rootPane, "DRAW");
+					setVisible(false);
+					dispose();
 				}
 				textField.setText(Integer.toString(p1.hp));
 				textField_1.setText(Integer.toString(cpu1.hp));
@@ -126,12 +139,18 @@ public class BattleFieldGUI extends JFrame {
 				System.out.println(cpu1.hp);
 				if (gb.checkLifeHero(p1, cpu1) == -1) {
 					JOptionPane.showMessageDialog(rootPane, "PLAYER WINS!");
+					setVisible(false);
+					dispose();
 				} 
 				if (gb.checkLifeHero(p1, cpu1) == 1) {
 					JOptionPane.showMessageDialog(rootPane, "CPU WINS!");
+					setVisible(false);
+					dispose();
 				} 
 				if (gb.checkLifeHero(p1, cpu1) == 0) {
 					JOptionPane.showMessageDialog(rootPane, "DRAW");
+					setVisible(false);
+					dispose();
 				}
 				textField.setText(Integer.toString(p1.hp));
 				textField_1.setText(Integer.toString(cpu1.hp));
